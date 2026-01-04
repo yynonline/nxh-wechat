@@ -12,8 +12,8 @@ class PKCS7Encoder
 
     /**
      * 对需要加密的明文进行填充补位
-     * @param $text 需要进行填充补位操作的明文
-     * @return 补齐明文字符串
+     * @param string $text 需要进行填充补位操作的明文
+     * @return string 补齐明文字符串
      */
     function encode($text)
     {
@@ -35,8 +35,8 @@ class PKCS7Encoder
 
     /**
      * 对解密后的明文进行补位删除
-     * @param decrypted 解密后的明文
-     * @return 删除填充补位后的明文
+     * @param string $text 解密后的明文
+     * @return string 删除填充补位后的明文
      */
     function decode($text)
     {
@@ -135,7 +135,7 @@ class Prpcrypt
 
     /**
      * 一物一码解密二维码包专用类
-     * @param $encrypted 二维码buffer数据
+     * @param string $encrypted 二维码buffer数据
      * @return array|bool
      */
     public function mkt_decrypt($encrypted ,$toArray = true)

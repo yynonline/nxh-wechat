@@ -4350,9 +4350,9 @@ class WechatCmpt
      */
     public function setCardTestWhiteList($openid=array(),$user=array()) {
         $data = array();
-        if (count($openid) > 0)
+        if (is_array($openid) && count($openid) > 0)
             $data['openid'] = $openid;
-        if (count($user) > 0)
+        if (is_array($user) && count($user) > 0)
             $data['username'] = $user;
         if (!$this->access_token && !$this->checkAuth()) return false;
         $result = $this->http_post(self::API_BASE_URL_PREFIX . self::CARD_TESTWHILELIST_SET . 'access_token=' . $this->access_token, self::json_encode($data));
@@ -4382,27 +4382,27 @@ class WechatCmpt
      * )
      * @return boolean|mixed
      * {
-        "data": {
-            "apply_id": 123,
-            "device_identifiers":[
-            {
-            "device_id":10100,
-            "uuid":"FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
-            "major":10001,
-            "minor":10002
-            }
-            ]
-        },
-        "errcode": 0,
-        "errmsg": "success."
-        }
+     *     "data": {
+     *       "apply_id": 123,
+     *       "device_identifiers":[
+     *           {
+     *           "device_id":10100,
+     *           "uuid":"FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+     *           "major":10001,
+     *           "minor":10002
+     *           }
+     *       ]
+     *   },
+     *   "errcode": 0,
+     *     "errmsg": "success."
+     *   }
 
-        apply_id:申请的批次ID，可用在“查询设备列表”接口按批次查询本次申请成功的设备ID
-        device_identifiers:指定的设备ID 列表
-        device_id:设备编号
-        uuid、major、minor
-        audit_status:审核状态。0：审核未通过、1：审核中、2：审核已通过；审核会在三个工作日内完成
-        audit_comment:审核备注，包括审核不通过的原因
+     *   apply_id:申请的批次ID，可用在“查询设备列表”接口按批次查询本次申请成功的设备ID
+     *   device_identifiers:指定的设备ID 列表
+     *   device_id:设备编号
+     *   uuid、major、minor
+     *   audit_status:审核状态。0：审核未通过、1：审核中、2：审核已通过；审核会在三个工作日内完成
+     *   audit_comment:审核备注，包括审核不通过的原因
      * @access public
      * @author polo<gao.bo168@gmail.com>
      * @version 2015-3-25 下午1:24:06
@@ -4438,11 +4438,11 @@ class WechatCmpt
      *      "comment" => "测试专用", //备注(非必填)
      * )
      * {
-        "data": {
-        },
-        "errcode": 0,
-        "errmsg": "success."
-       }
+     *   "data": {
+     *   },
+     *   "errcode": 0,
+     *   "errmsg": "success."
+     *  }
      * @return boolean
      * @author binsee<binsee@163.com>
      * @version 2015-4-20 23:45:00
