@@ -33,7 +33,7 @@
 使用Composer安装：
 
 ```bash
-composer require nanxihang/wechat
+composer require nanxihang/wechat ^1.0.1
 ```
 
 ## 快速开始
